@@ -7,12 +7,14 @@ let wrongword = [];
 let underscores = [];
 const maxGuess = 10;
 
+let docUnderScore = document.getElementsByClassName('underScore');
+
 console.log(pickedWord);
 
 let generateUnderscore = () => {
     for(let i = 0; i < pickedWord.length; i++) {
         underscore.push('_');
-
+        
     }
     return underscore;
 }
@@ -21,11 +23,16 @@ console.log(generateUnderscore());
 
 document.addEventListener('keypress' , (event) => {
     console.log(event);
+    
     let keyword = String.fromCharCode(event.keyCode);
     console.log(pickedWord.indexOf(keyword));
+    
     if(pickedWord.indexOf(keyword) > -1) {
         rightword.push(keyword);
+        
         underscores[pickedWord.indexOf(keyword)] = keyword;
+        
+        
         if(underscores.join('') == pickedWord) {
             alert('You Win!');
         }
@@ -33,6 +40,7 @@ document.addEventListener('keypress' , (event) => {
         console.log(rightword);
 
         wrongword.push(keyword);
+        
         console.log(wrongword);
     }
     underscores[pickedWord.indexOf(keyword)] = keyword;
