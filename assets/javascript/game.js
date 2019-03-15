@@ -1,10 +1,10 @@
-const words = ["Caustic" , "Lifeline" , "Gibraltar" , "Bloodhound" , "Mirage" , "Wraith" , "Bangalore" , "Pathfinder" , "ApexLegends" , "Mastiff" , "Peacekeeper" , "Spitfire" , "Wingman" , "Kraber" , "Longbow" , "Devotion" , "Hemlok" , "Havoc" , "Flatline" , "TripleTake" , "Alternator" , "Prowler" , "Mozambique" , "Syringe" , "MedKit", "PhoenixKit" , "ShieldCell" , "ShieldBattery" , "UltimateAccelerant" , "BodyShield" , "Helmet" , "KnockdownShield" , "Backpack" , "SlumLakes" , "ThePit" , "Runoff" , "Cascades" , "Artillery" , "Bunker" , "Airbase" , "Relay" , "Wetlands" , "Bridges" , "Swamps" , "HydroDam" , "Repulsor" , "WaterTreatment" , "Market" , "SkullTown" , "Thunderdome"];
+const words = ["caustic" , "lifeline" , "gibraltar" , "bloodhound" , "mirage" , "wraith" , "bangalore" , "pathfinder" , "apexlegends" , "mastiff" , "peacekeeper" , "spitfire" , "wingman" , "kraber" , "longbow" , "devotion" , "hemlok" , "havoc" , "flatline" , "tripletake" , "alternator" , "prowler" , "mozambique" , "syringe" , "medkit", "phoenixkit" , "shieldcell" , "shieldbattery" , "ultimateaccelerant" , "bodyshield" , "helmet" , "knockdownshield" , "backpack" , "slumlakes" , "thepit" , "runoff" , "cascades" , "artillery" , "bunker" , "airbase" , "relay" , "wetlands" , "bridges" , "swamps" , "hydrodam" , "repulsor" , "watertreatment" , "market" , "skulltown" , "thunderdome"];
 let randomNum = [Math.floor(Math.random() * words.length)];
 let pickedWord = words[randomNum];
 let underscore = [];
 let rightword = [];
 let wrongword = [];
-let underscore = [];
+let underscores = [];
 const maxGuess = 10;
 
 console.log(pickedWord);
@@ -24,8 +24,20 @@ document.addEventListener('keypress' , (event) => {
     let keyword = String.fromCharCode(event.keyCode);
     console.log(pickedWord.indexOf(keyword));
     if(pickedWord.indexOf(keyword) > -1) {
-        console.log(true);
+        rightword.push(keyword);
+        underscores[pickedWord.indexOf(keyword)] = keyword;
+        if(underscores.join('') == pickedWord) {
+            alert('You Win!');
+        }
+        
+        console.log(rightword);
+
+        wrongword.push(keyword);
+        console.log(wrongword);
     }
+    underscores[pickedWord.indexOf(keyword)] = keyword;
+    console.log(underscores);
+    
     
 
 
