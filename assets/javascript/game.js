@@ -43,7 +43,7 @@ document.addEventListener('keypress' , (event) => {
         
         console.log(wrongword);
     }
-    underscores[pickedWord.indexOf(keyword)] = keyword;
+    document.getElementsByClassName(underscores);
     console.log(underscores);
     
     
