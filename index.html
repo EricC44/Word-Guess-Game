@@ -6,7 +6,7 @@
         <title>Fun Word Guess Game</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="stylesheet" href="assets/css/style.css">
-        <script type="text/javascript" src="assets/javascript/game.js"></script>
+        <script src="assets/javascript/game.js" type="text/javascript"></script>
     </head>
 
     <body>
@@ -18,26 +18,27 @@
                 </header>
             </div>
             <br>
+            <div class="row-fluid text-center">
+                <div class="col-md-12">
+                    <h3>Guess The Word</h3>
+                    <h2 id= "underscores"></h2>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-md-6 text-center pt-1">
+                    
                     <div class="row">
                         <div class="col pt-4 pb-4">
-                            <div class="underscrores"></div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col pt-4 pb-4">
-                            <div class="correct-guesses">Correct Guesses</div>
+                            <h3>Guesses Left</h3>
+                            <h4 id= "guessesLeft"></h4>
                         </div>    
                     </div>
                     <div class="row">
                         <div class="col pt-4 pb-4">
-                            <div class="wrong-Letters">Wrong Letters</div>
+                            <h4>Wrong Letters</h4>
+                            <h5 id="wrongLetters"></h5>
                         </div>
                     </div>
-                </div>
-                
-                <div class="col-md-6 text-center">
                     <div class="row">
                         <div class="col">
                             <h3>Wins</h3>
@@ -50,11 +51,35 @@
                             <h4 id= "guesses-Left"></h4>
                         </div>
                     </div>
+                </div>
+                
+                <div class="col-md-6 text-center">
+                    <div class="row">
+                        <div class="col">
+                            <img id="you-win" src="assets/images/you-win.png" alt="winner">
+                            <img id="you-lose" src="assets/images/you-lose.png" alt="loser">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <img id="play-again" src="assets/images/play-again.png" alt="again">
+                        </div>
+                    </div>
 
 
                 </div>
             </div>
         </div>
+        <script>
+            resetGame();
+            updateDisplay();
+        </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
+        crossorigin="anonymous"></script>
+        
+        
 
 
 

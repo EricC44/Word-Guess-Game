@@ -1,12 +1,15 @@
-var words = ["caustic" , "lifeline" , "gibraltar" , "bloodhound" , "mirage" , "wraith" , "bangalore" , "pathfinder" , "apexlegends" , "mastiff" , "peacekeeper" , "spitfire" , "wingman" , "kraber" , "longbow" , "devotion" , "hemlok" , "havoc" , "flatline" , "tripletake" , "alternator" , "prowler" , "mozambique" , "syringe" , "medkit", "phoenixkit" , "shieldcell" , "shieldbattery" , "ultimateaccelerant" , "bodyshield" , "helmet" , "knockdownshield" , "backpack" , "slumlakes" , "thepit" , "runoff" , "cascades" , "artillery" , "bunker" , "airbase" , "relay" , "wetlands" , "bridges" , "swamps" , "hydrodam" , "repulsor" , "watertreatment" , "market" , "skulltown" , "thunderdome"];
-var wrongLetters = [];
+var words = ["CAUSTIC" , "LIFELINE" , "GIBRALTAR" , "BLOODHOUND" , "MIRAGE" , "WRAITH" , "BANGALORE" , "PATHFINDER" , "APEXLEGENDS" , "MASTIFF" , "PEACEKEEPER" , "SPITFIRE" , "WINGMAN" , "KRABER" , "LONGBOW" , "DEVOTION" , "HEMLOK" , "HAVOC" , "FLATLINE" , "TRIPLETAKE" , "ALTERNATOR" , "PROWLER" , "MOZAMBIQUE" , "SYRINGE" , "MEDKIT", "PHOENIXKIT" , "SHIELDCELL" , "SHIELDBATTERY" , "ULTIMATEACCELERANT" , "BODYSHIELD" , "HELMET" , "KNOCKDOWNSHIELD" , "BACKPACK" , "SLUMLAKES" , "THEPIT" , "RUNOFF" , "CASCADES" , "ARTILLERY" , "BUNKER" , "AIRBASE" , "RELAY" , "WETLANDS" , "BRIDGES" , "SWAMPS" , "HYDRODAM" , "REPULSOR" , "WATERTREATMENT" , "MARKET" , "SKULLTOWN" , "THUNDERDOME"];
+
+
+const maxGuess = 10;
+
+var guessedLetters = [];
+var pickedWord;
 var guessingWord = [];
-var rightword = [];
-var wrongword = [];
 var guessLeft = 0;
 var gameOver = false;
 var gamesWon = 0;
-const maxGuess = 10;
+
 
 
 
@@ -22,20 +25,21 @@ const maxGuess = 10;
 function resetGame() {
     guessLeft = maxGuess;
 
-    currentWordIndex = Math.floor(Math.random() * (words.length));
+    pickedWord = Math.floor(Math.random() * (words.length));
 
     guessedLetters = [];
     guessingWord = [];
 
 
-    for(var i = 0; i < words[currentWordIndex].length; i++) {
+    for(var i = 0; i < words[pickedWord].length; i++) {
         guessingWord.push('_');
     }
 
-    document.getElementById("you-lose").style.cssText="display: none";
-    document.getElementById("you-win").style.cssText="display: none";
-    document.getElementById("play-again").style.cssText="display: none";
-
+    document.getElementById("play-again").style.cssText= "display: none";
+    document.getElementById("you-lose").style.cssText= "display: none";
+    document.getElementById("you-win").style.cssText= "display: none";
+    
+    
     updateDisplay();
 
 
@@ -59,11 +63,12 @@ function updateDisplay() {
 function evaluateGuess(letter) {
     var positions = [];
 
-    for(var i = 0; i < words[currentWordIndex].length; i++) {
-        if(words[currentWordIndex][i] === letter) {
+    for(var i = 0; i < words[pickedWord].length; i++) {
+        if(words[pickedWord][i] === letter) {
             positions.push(i);
             
         }
+        
     }
 
     if(positions.length <=0) {
@@ -75,3 +80,45 @@ function evaluateGuess(letter) {
         }
     }
 }
+
+function checkWin() {
+
+    if(guessingWord.indexOf("_") === -1) {
+        document.getElementById("you-win").style.cssText = "display: block";
+        document.getElementById("play-again").style.cssText = "display: block";
+        gameOver = true;
+    }
+};
+
+function checkLoss() {
+    if(guessLeft <=0) {
+        document.getElementById("you-lose").style.cssText = "display: block";
+        document.getElementById("play-again").style.cssText = "display: block";
+        gameOver = true;
+    }
+};
+
+function makeGuess(letter) {
+    if(guessLeft > 0) {
+
+        if(guessedLetters.indexOf(letter) === -1) {
+            guessedLetters.push(letter);
+            evaluateGuess(letter);
+        }
+    }
+};
+
+document.onkeydown = function(event) {
+    if(gameOver) {
+        resetGame();
+        gameOver = false;
+    } else {
+        if(event.keyCode >= 65 && event.keyCode <=90) {
+
+            makeGuess(event.key.toUpperCase());
+            updateDisplay();
+            checkWin();
+            checkLoss();
+        }
+    }
+};
