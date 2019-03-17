@@ -9,6 +9,8 @@ var guessingWord = [];
 var guessLeft = 0;
 var gameOver = false;
 var gamesWon = 0;
+var wrongLetters = [];
+var gamesLost = 0;
 
 
 
@@ -29,6 +31,7 @@ function resetGame() {
 
     guessedLetters = [];
     guessingWord = [];
+    wrongLetters = [];
 
 
     for(var i = 0; i < words[pickedWord].length; i++) {
@@ -48,6 +51,7 @@ function resetGame() {
 function updateDisplay() {
 
     document.getElementById("totalWins").innerText = gamesWon;
+    document.getElementById("totalLoses").innerText = gamesLost;
 
     var guessingWordText = "";
     for(var i = 0; i < guessingWord.length; i++) {
@@ -71,7 +75,10 @@ function evaluateGuess(letter) {
         
     }
 
+    document.getElementById("wrongLetters").innerText = wrongLetters 
+    
     if(positions.length <=0) {
+        wrongLetters.push(letter);
         guessLeft--;
     } else {
 
@@ -84,6 +91,7 @@ function evaluateGuess(letter) {
 function checkWin() {
 
     if(guessingWord.indexOf("_") === -1) {
+        gamesWon++;
         document.getElementById("you-win").style.cssText = "display: block";
         document.getElementById("play-again").style.cssText = "display: block";
         gameOver = true;
@@ -92,6 +100,7 @@ function checkWin() {
 
 function checkLoss() {
     if(guessLeft <=0) {
+        gamesLost++;
         document.getElementById("you-lose").style.cssText = "display: block";
         document.getElementById("play-again").style.cssText = "display: block";
         gameOver = true;
