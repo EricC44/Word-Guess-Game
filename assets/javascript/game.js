@@ -14,7 +14,11 @@ var gamesLost = 0;
 
 
 
-
+var correctGuess = new audio('./assets/sounds/correctGuess.mp3');
+var loseAudio = new audio('./assets/sounds/loseAudio.mp3');
+var startAudio = new audio('./assets/sounds/startAudio.mp3');
+var winAudio = new audio('./assets/sounds/winAudio.mp3');
+var wrongGuess = new audio('./assets/sounds/wrongGuess.mp3');
 
 
 
@@ -70,6 +74,7 @@ function evaluateGuess(letter) {
     for(var i = 0; i < words[pickedWord].length; i++) {
         if(words[pickedWord][i] === letter) {
             positions.push(i);
+            correctGuess.play();
             
         }
         
@@ -80,6 +85,9 @@ function evaluateGuess(letter) {
     if(positions.length <=0) {
         wrongLetters.push(letter);
         guessLeft--;
+        wrongGuess.play();
+
+        
     } else {
 
         for(var i = 0; i < positions.length; i++) {
