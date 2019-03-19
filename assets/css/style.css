@@ -2,6 +2,7 @@ header {
     border: 3px solid black;
     height: 250px;
     background:url(../images/Title-Apex.jpg);
+    background-size: cover
     
 }
 #underscores {
@@ -13,17 +14,20 @@ h2,h3,h4 {
     font-family: 'Press Start 2P', cursive;
     color:white;
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    
 }
 #wrongLetters {
     font-family: 'Press Start 2P', cursive;
     color:white;
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    
 }
 
 #underscores {
     font-family: 'Press Start 2P', cursive;
     color:white;
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    
 }
 
 body {
@@ -38,11 +42,17 @@ h1 {
 
 }
 #you-win {
-    background-size: cover;
+    background: cover;
+    
 }
 #you-lose {
     background-size: cover;
+    
 }
 #play-again {
     background-size: cover;
+    
+}
+.col-md-6 {
+    border: 3px solid black;
 }

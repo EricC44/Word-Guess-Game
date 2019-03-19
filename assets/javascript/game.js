@@ -14,6 +14,40 @@ var gamesLost = 0;
 
 
 
+var correctGuess = document.getElementById("correctGuess");
+var loseAudio = document.getElementById("loseAudio");
+var startAudio  = document.getElementById("startAudio");
+var winAudio  = document.getElementById("winAudio");
+var wrongGuess = document.getElementById("wrongGuess");
+
+
+
+
+function aud() {
+    if(words[pickedWord][i] === letter) {
+        correctGuess.play();
+        correctGuess.onpause();
+    }
+
+    if(guessLeft <=0) {
+        loseAudio.play();
+        loseAudio.onpause();
+    }
+
+    
+
+
+
+
+
+
+}
+
+
+
+
+
+
 
 
 
@@ -38,6 +72,8 @@ function resetGame() {
         guessingWord.push('_');
     }
     
+    
+
     document.getElementById("play-again").style.cssText= "display: none";
     document.getElementById("you-lose").style.cssText= "display: none";
     document.getElementById("you-win").style.cssText= "display: none";
@@ -73,6 +109,7 @@ function evaluateGuess(letter) {
             
             
         }
+        
          
     }
 
