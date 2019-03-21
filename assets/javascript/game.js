@@ -23,40 +23,12 @@ var wrongGuess = document.getElementById("wrongGuess");
 
 
 
-function aud() {
-    if(words[pickedWord][i] === letter) {
-        correctGuess.play();
-        correctGuess.onpause();
-    }
-
-    if(guessLeft <=0) {
-        loseAudio.play();
-        loseAudio.onpause();
-    }
-
-    
 
 
 
 
 
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// This function is for starting and resetting the game when needed
 
 function resetGame() {
     guessLeft = maxGuess;
@@ -79,11 +51,12 @@ function resetGame() {
     document.getElementById("you-win").style.cssText= "display: none";
     
     
+    
     updateDisplay();
 
-
+    
 };
-
+ // This function is for changing the display of the page
 function updateDisplay() {
 
     document.getElementById("totalWins").innerText = gamesWon;
@@ -99,10 +72,10 @@ function updateDisplay() {
     document.getElementById("wrongLetters").innerText = wrongLetters;
 
 }
-
+// This function is to when a letter is guessed it will push the letter to the appropriate variable
 function evaluateGuess(letter) {
     var positions = [];
-
+    
     for(var i = 0; i < words[pickedWord].length; i++) {
         if(words[pickedWord][i] === letter) {
             positions.push(i);
@@ -122,13 +95,15 @@ function evaluateGuess(letter) {
 
         
     } else {
-
+        
         for(var i = 0; i < positions.length; i++) {
             guessingWord[positions[i]] = letter;
+            
         }
+        
     }
 }
-
+// This function is to check our victory conditions
 function checkWin() {
 
     if(guessingWord.indexOf("_") === -1) {
@@ -140,7 +115,7 @@ function checkWin() {
     }
     
 };
-
+// This function is to check our defeat conditions
 function checkLoss() {
     if(guessLeft <=0) {
         gamesLost++;
@@ -161,7 +136,7 @@ function makeGuess(letter) {
         }
     }
 };
-
+// This is for keeping track of what keystrokes you use
 document.onkeydown = function(event) {
     if(gameOver) {
         resetGame();
